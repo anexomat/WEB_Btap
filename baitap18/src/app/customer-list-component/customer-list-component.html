@@ -1,0 +1,34 @@
+<p>customer-list-component works!</p>
+<table class="customer-table" border="1">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Duyệt qua từng nhóm loại khách hàng -->
+    <ng-container *ngFor="let group of customer_types()">
+      <!-- Dòng tiêu đề loại khách hàng (gộp 5 cột) -->
+      <tr class="group-header">
+        <td colspan="5">
+          {{ group.CustomerTypeId }} - {{ group.CustomterTypeName }}
+        </td>
+      </tr>
+
+      <!-- Duyệt qua danh sách khách hàng trong nhóm -->
+      <tr *ngFor="let cus of group.Customers">
+        <td>{{ cus.Id }}</td>
+        <td>{{ cus.Name }}</td>
+        <td>{{ cus.Email }}</td>
+        <td>{{ cus.Age }}</td>
+        <td class="avatar-cell">
+          <img [src]="cus.Image" [alt]="cus.Name" />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
